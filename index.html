@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html >
+<head>
+	<title>Association Rule</title>
+	<link rel="stylesheet" type="text/css" href="bootstrap-theme.min.css">
+</head>
+<body ng-app="AssociationRule" ng-controller="AssociationRuleController" >
+
+	<input type="file" id="files" name="file" class="btn btn-default "/> 
+	<button ng-click="readFile('files')">load</button>
+	<button ng-click="initializationItemSet()">inisialisasi</button>
+	<button ng-click="cariAssociation()">cari Association</button>
+	<button ng-click="getConfidence()">cari Confidence</button>
+	<!-- <div class="row">
+                        <div class="col-md-6">     
+                            erre
+                        </div>
+                        <div class="col-md-6">
+                           erer
+                        </div>
+                    </div> -->
+	<table border="1">
+		<tr>
+			<th>transaksi</th>
+		</tr>
+		<tr ng-repeat="x in transaksi">
+			<td ng-repeat="y in x">{{y}}</td>
+		</tr>
+	</table>
+	<br>
+	<!-- <div ng-repeat="x in transaksi"> {{x}} </div> -->
+	<div class="row">
+		<div style="float:left;">
+		<table border="1">
+			<tr>
+				<th>item set</th>
+			</tr>
+			<tr ng-repeat="x in itemSet ">
+				<td ng-repeat="y in x">{{y}}</td>	
+			</tr>
+		</table>
+		</div>
+		<div style="float:left;">
+		<table border="1">
+			<tr>
+				<th>jumlah</th>
+			</tr>
+			<tr ng-repeat="x in banyakItemSetDitransaksi track by $index">
+				<td >{{x}}</td>	
+			</tr>
+		</table>
+		</div>
+		<div style="float:left;">
+			<table border="1">
+				<tr>
+					<th>support</th>
+				</tr>
+				<tr ng-repeat="x in nilaiSupport track by $index">
+					<td >{{x}}</td>	
+				</tr>
+			</table>
+		</div>
+	</div>
+	<div ng-show="AssociationRule != null">
+		<span>association yang didapatkan:</span>
+		<div ng-repeat="x in AssociationRule track by $index"> 
+			<span>jika seseorang membeli {{x[0]}}, maka tingkat keyakinan dia  membeli {{x[1]}} adalah {{x[2]*100}} %</span>
+			<span>   </span>
+		</div>
+	</div>
+
+	<!-- <div style="float:left;"><div ng-repeat="y in itemSet"> {{y}} </div></div> -->
+	<!-- <div style="float: left;"><div ng-repeat="z in banyakItemSetDitransaksi track by $index"> {{z}} </div></div> -->
+	
+	
+	
+
+
+	<script type="text/javascript" src="jquery-3.2.1.min.js"></script>	
+	<script type="text/javascript" src="angular.min.js"></script>
+	<script type="text/javascript" src="main.js"></script>
+	<script type="text/javascript" src="read-data.js"></script>
+</body>
+</html>
